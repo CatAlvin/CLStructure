@@ -264,6 +264,54 @@ public class LinkList<T> {
     }
 
     /**
+     * 原地反转链表
+     * 
+     */
+    public void reverse() {
+        if (this.head == null || this.head.getNext() == null) {
+            return;
+        }
+        LinkListNode<T> pre = null;
+        LinkListNode<T> temp = this.head.getNext();
+        while (temp != null) {
+            this.head.setNext(pre);
+            pre = this.head;
+            this.head = temp;
+            temp = temp.getNext();
+            if (temp == null)
+                this.head.setNext(pre);
+        }
+    }
+
+    /**
+     * 返回当前链表反转后的链表
+     * 
+     * @return 返回一个反转后的链表
+     */
+    public LinkList<T> reversed() {
+        LinkList<T> reversed = this.copy();
+        reversed.reverse();
+        return reversed;
+    }
+
+    /**
+     * 返回当前链表的浅拷贝副本
+     * 
+     * @return 返回链表浅拷贝副本
+     */
+    public LinkList<T> copy() {
+        LinkListNode<T> newHead = new LinkListNode<T>(this.head.getValue());
+        LinkListNode<T> cur = this.head.getNext();
+        LinkListNode<T> newCur = newHead;
+        while (cur != null){
+            newCur.setNext(new LinkListNode<T>(cur.getValue()));
+            cur = cur.getNext();
+            newCur = newCur.getNext();
+        }
+        return new LinkList<T>(newHead, this.length);
+    }
+
+    /**
      * 遍历打印链表的值
      * 
      * @return null

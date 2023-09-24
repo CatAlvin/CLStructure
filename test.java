@@ -2,7 +2,9 @@ import Java_CLStructure.LinkList;
 
 public class test {
     public static void main(String[] args) {
-        LinkList<Integer> l = new LinkList<Integer>(0, 5);
-        l.show();
+        Integer arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        LinkList<Integer> l = new LinkList<Integer>(arr);
+        LinkList<Integer> l_reversed = l.reversed();
+        l_reversed.show();
     }
 }
