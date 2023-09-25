@@ -1,4 +1,4 @@
-package Java_CLStructure;
+package CLStructure;
 
 // 链表
 // 作者：程澜
@@ -303,12 +303,27 @@ public class LinkList<T> {
         LinkListNode<T> newHead = new LinkListNode<T>(this.head.getValue());
         LinkListNode<T> cur = this.head.getNext();
         LinkListNode<T> newCur = newHead;
-        while (cur != null){
+        while (cur != null) {
             newCur.setNext(new LinkListNode<T>(cur.getValue()));
             cur = cur.getNext();
             newCur = newCur.getNext();
         }
         return new LinkList<T>(newHead, this.length);
+    }
+
+    /**
+     * 将链表转换为列表
+     * 
+     * @return 转换后的列表
+     */
+    Object[] to_list() {
+        LinkListNode<T> cur = this.head;
+        Object[] list = new Object[this.length];
+        for (int i = 0; i < list.length; i++) {
+            list[i] = cur.getValue();
+            cur = cur.getNext();
+        }
+        return list;
     }
 
     /**

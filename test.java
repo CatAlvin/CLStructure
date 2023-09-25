@@ -1,4 +1,4 @@
-import Java_CLStructure.LinkList;
+import CLStructure.LinkList;
 
 public class test {
     public static void main(String[] args) {
